@@ -1,0 +1,24 @@
+.contactItem {
+  display: flex;
+  justify-content: space-between;
+}
+.contactItem:not(:last-child) {
+  margin-bottom: 20px;
+}
+.contactItem__name {
+  font-weight: 600;
+  font-size: 1em;
+  margin-right: 25px;
+}
+.contactItem__number {
+}
+.btn-delete {
+  width: 100px;
+  padding: 5px;
+  background-color: rgb(68, 68, 141);
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  border: solid 1px black;
+  border-radius: 3px;
+}

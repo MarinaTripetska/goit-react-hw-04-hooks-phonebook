@@ -1,0 +1,31 @@
+.contactForm {
+  padding: 5px;
+  display: grid;
+  grid-template-areas:
+    'inputName buttonSubmit'
+    'inputNumber buttonSubmit';
+  grid-gap: 20px;
+}
+.inputName,
+.inputNumber {
+  display: flex;
+  column-gap: 20px;
+  font-weight: 700;
+  font-size: 1.5em;
+}
+.inputName {
+  grid-area: inputName;
+}
+.inputNumber {
+  grid-area: inputNumber;
+}
+.buttonSubmit {
+  grid-area: buttonSubmit;
+
+  background-color: rgb(68, 68, 141);
+  color: white;
+  cursor: pointer;
+  user-select: none;
+  border: solid 1px black;
+  border-radius: 3px;
+}
