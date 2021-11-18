@@ -20,12 +20,25 @@
   grid-area: inputNumber;
 }
 .buttonSubmit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 20px;
+  padding: 5px 15px;
+
   grid-area: buttonSubmit;
 
   background-color: rgb(68, 68, 141);
+
+  font-size: 22px;
   color: white;
+
   cursor: pointer;
   user-select: none;
   border: solid 1px black;
   border-radius: 3px;
+}
+.buttonSubmit-icon {
+  width: 30px;
+  height: 30px;
 }

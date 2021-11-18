@@ -1,5 +1,6 @@
 import { Component } from 'react'
 import PropTypes from 'prop-types'
+import { MdAddIcCall } from 'react-icons/md'
 import './ContactForm.scss'
 const shortid = require('shortid')
 
@@ -67,7 +68,7 @@ export default class ContactForm extends Component {
         </label>
         <br />
         <button className="buttonSubmit" type="submit">
-          Add contact
+          <MdAddIcCall className="buttonSubmit-icon" /> <span>Add contact</span>
         </button>
       </form>
     )
