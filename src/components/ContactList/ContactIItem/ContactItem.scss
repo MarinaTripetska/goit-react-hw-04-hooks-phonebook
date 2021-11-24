@@ -2,6 +2,9 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 30px;
+  @media screen and(max-width:450px) {
+    column-gap: 15px;
+  }
 }
 
 .contactItem:not(:last-child) {
@@ -27,7 +30,9 @@
   justify-content: center;
   column-gap: 10px;
 
-  width: 100px;
+  width: 100%;
+  max-width: 100px;
+  height: 35px;
   padding: 5px;
   background-color: rgb(68, 68, 141);
   color: white;
@@ -37,4 +42,14 @@
   border-radius: 3px;
 
   justify-self: end;
+
+  @media screen and(max-width:450px) {
+    width: 40px;
+    font-size: 22px;
+  }
+}
+.btn-delete--txt {
+  @media screen and(max-width:450px) {
+    display: none;
+  }
 }

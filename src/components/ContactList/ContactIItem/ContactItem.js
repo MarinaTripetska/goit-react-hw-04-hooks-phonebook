@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import { MdPhoneEnabled } from 'react-icons/md'
 import { AiFillDelete } from 'react-icons/ai'
 import './ContactItem.scss'
+
 const ContactItem = ({ id, name, number, onClick }) => {
   return (
     <li id={id} className="contactItem">
@@ -11,15 +12,17 @@ const ContactItem = ({ id, name, number, onClick }) => {
       </a>
 
       <button className="btn-delete" type="button" onClick={() => onClick(id)}>
-        <AiFillDelete /> Delete
+        <AiFillDelete /> <span className="btn-delete--txt">Delete</span>
       </button>
     </li>
   )
 }
+
 ContactItem.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired,
 }
+
 export default ContactItem

@@ -40,9 +40,10 @@ export default class ContactForm extends Component {
 
     return (
       <form className="contactForm" onSubmit={this.onFormSubmit}>
-        <label className="inputName" htmlFor={this.inputNameId}>
+        <label className="rowName" htmlFor={this.inputNameId}>
           Name
           <input
+            className="input"
             id={this.inputNameId}
             type="text"
             name="name"
@@ -53,9 +54,11 @@ export default class ContactForm extends Component {
             required
           />
         </label>
-        <label className="inputNumber" htmlFor={this.inputPhoneId}>
+
+        <label className="rowNumber" htmlFor={this.inputPhoneId}>
           Phone
           <input
+            className="input"
             id={this.inputPhoneId}
             type="tel"
             name="number"
@@ -66,9 +69,11 @@ export default class ContactForm extends Component {
             required
           />
         </label>
+
         <br />
+
         <button className="buttonSubmit" type="submit">
-          <MdAddIcCall className="buttonSubmit-icon" /> <span>Add contact</span>
+          <MdAddIcCall className="buttonSubmit-icon" /> <span className="buttonSubmit-txt">Add contact</span>
         </button>
       </form>
     )
