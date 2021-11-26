@@ -1,81 +1,87 @@
-import { Component } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { MdAddIcCall } from 'react-icons/md'
 import './ContactForm.scss'
 const shortid = require('shortid')
 
-export default class ContactForm extends Component {
-  static propTypes = {
-    handleSubmit: PropTypes.func.isRequired,
-  }
+export default function ContactForm({ handleSubmit }) {
+  const [name, setName] = useState('')
+  const [number, setNumber] = useState('')
 
-  state = {
-    name: '',
-    number: '',
-  }
+  const inputNameId = shortid.generate()
+  const inputPhoneId = shortid.generate()
 
-  inputNameId = shortid.generate()
-  inputPhoneId = shortid.generate()
-
-  handleChange = e => {
+  const handleChange = e => {
     const { name, value } = e.target
-    this.setState({
-      [name]: value,
-    })
+
+    switch (name) {
+      case 'name':
+        setName(value)
+        break
+
+      case 'number':
+        setNumber(value)
+        break
+
+      default:
+        return
+    }
   }
 
-  onFormSubmit = e => {
-    const { name, number } = this.state
+  const onFormSubmit = e => {
     e.preventDefault()
-    this.props.handleSubmit(name, number)
-    this.reset()
+    handleSubmit(name, number)
+    reset()
   }
 
-  reset = () => {
-    this.setState({ name: '', number: '' })
+  const reset = () => {
+    setName('')
+    setNumber('')
   }
 
-  render() {
-    const { name, number } = this.state
+  return (
+    <form className="contactForm" onSubmit={onFormSubmit}>
+      <label className="rowName" htmlFor={inputNameId}>
+        Name
+        <input
+          className="input"
+          id={inputNameId}
+          type="text"
+          name="name"
+          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
+          onChange={handleChange}
+          value={name}
+          required
+        />
+      </label>
 
-    return (
-      <form className="contactForm" onSubmit={this.onFormSubmit}>
-        <label className="rowName" htmlFor={this.inputNameId}>
-          Name
-          <input
-            className="input"
-            id={this.inputNameId}
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Имя может состоять только из букв, апострофа, тире и пробелов. Например Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan и т. п."
-            onChange={this.handleChange}
-            value={name}
-            required
-          />
-        </label>
+      <label className="rowNumber" htmlFor={inputPhoneId}>
+        Phone
+        <input
+          className="input"
+          id={inputPhoneId}
+          type="tel"
+          name="number"
+          onChange={handleChange}
+          value={number}
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
+          required
+        />
+      </label>
 
-        <label className="rowNumber" htmlFor={this.inputPhoneId}>
-          Phone
-          <input
-            className="input"
-            id={this.inputPhoneId}
-            type="tel"
-            name="number"
-            onChange={this.handleChange}
-            value={number}
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
-            required
-          />
-        </label>
+      <br />
 
-        <br />
-
-        <button className="buttonSubmit" type="submit">
-          <MdAddIcCall className="buttonSubmit-icon" /> <span className="buttonSubmit-txt">Add contact</span>
-        </button>
-      </form>
-    )
-  }
+      <button className="buttonSubmit" type="submit">
+        <MdAddIcCall className="buttonSubmit-icon" /> <span className="buttonSubmit-txt">Add contact</span>
+      </button>
+    </form>
+  )
+}
+ContactForm.defaultProps = {
+  handleSubmit: () => null,
+}
+ContactForm.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
 }
