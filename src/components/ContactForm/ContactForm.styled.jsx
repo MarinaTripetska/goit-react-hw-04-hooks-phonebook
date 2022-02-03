@@ -1,5 +1,8 @@
-.contactForm {
+import styled from 'styled-components'
+
+export const Form = styled.form`
   padding: 5px;
+
   display: grid;
   grid-template-areas:
     'rowName buttonSubmit'
@@ -7,40 +10,41 @@
 
   grid-gap: 20px;
 
-  @media screen and(max-width: 480px) {
+  @media (max-width: 480px) {
     grid-gap: 10px;
     grid-template-areas:
       'rowName '
       'rowNumber'
-      ' buttonSubmit';
+      'buttonSubmit';
   }
-}
-
-.rowName,
-.rowNumber {
+`
+const Area = styled.label`
   display: inline-flex;
   justify-content: space-between;
   column-gap: 20px;
 
   font-weight: 700;
   font-size: 1.5em;
-}
-.rowName {
+
+  & input {
+    width: 100%;
+    max-width: 300px;
+    min-width: 175px;
+  }
+`
+
+export const AreaName = styled(Area)`
   grid-area: rowName;
-}
-.rowNumber {
+`
+export const AreaNumber = styled(Area)`
   grid-area: rowNumber;
-}
-.input {
-  width: 100%;
-  max-width: 300px;
-  min-width: 175px;
-}
-.buttonSubmit {
+`
+
+export const SubmitBtn = styled.button`
   grid-area: buttonSubmit;
+  margin-left: auto;
 
   display: flex;
-
   align-items: center;
   justify-content: center;
   column-gap: 20px;
@@ -49,37 +53,34 @@
   width: 100%;
   max-width: 200px;
 
-  margin-left: auto;
-
-  background-color: rgb(68, 68, 141);
-
   font-size: 20px;
   color: white;
+  background-color: var(--button-color);
 
-  cursor: pointer;
   user-select: none;
   border: solid 1px black;
   border-radius: 3px;
-  @media screen and (max-width: 768px) {
+  cursor: pointer;
+
+  & svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  @media (max-width: 768px) {
     font-size: 16px;
     column-gap: 10px;
   }
-  @media screen and(max-width: 480px) {
+
+  @media (max-width: 550px) {
+    & span {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
     font-size: 16px;
     width: 60px;
     height: 60px;
   }
-  // @media screen and (max-width: 380px) {
-
-  //   max-width: 120px;
-  // }
-}
-.buttonSubmit-icon {
-  width: 30px;
-  height: 30px;
-}
-.buttonSubmit-txt {
-  @media screen and(max-width: 550px) {
-    display: none;
-  }
-}
+`

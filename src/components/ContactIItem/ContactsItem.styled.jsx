@@ -1,31 +1,32 @@
-.contactItem {
+import styled from 'styled-components'
+
+export const Item = styled.li`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   column-gap: 30px;
-  @media screen and(max-width:450px) {
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+
+  @media (max-width: 450px) {
     column-gap: 15px;
   }
-}
+`
 
-.contactItem:not(:last-child) {
-  margin-bottom: 20px;
-}
-
-.contactItem__name {
+export const Name = styled.span`
   font-weight: 600;
   font-size: 1em;
-}
-
-.contactItem__number {
+`
+export const Phone = styled.a`
   white-space: nowrap;
   color: inherit;
   text-decoration: none;
   display: flex;
   align-items: center;
   column-gap: 7px;
-}
-
-.btn-delete {
+`
+export const ButtonDelete = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,7 +36,7 @@
   max-width: 100px;
   height: 35px;
   padding: 5px;
-  background-color: rgb(68, 68, 141);
+  background-color: var(--button-color);
   color: white;
   cursor: pointer;
   user-select: none;
@@ -44,13 +45,11 @@
 
   justify-self: end;
 
-  @media screen and(max-width:450px) {
+  @media (max-width: 450px) {
     width: 40px;
     font-size: 22px;
+    & span {
+      display: none;
+    }
   }
-}
-.btn-delete--txt {
-  @media screen and(max-width:450px) {
-    display: none;
-  }
-}
+`

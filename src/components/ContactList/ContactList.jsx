@@ -1,15 +1,20 @@
-import ContactItem from './ContactIItem/ContactItem'
+import ContactItem from '../ContactIItem'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-import './ContactList.scss'
+const StyledList = styled.ul`
+  width: 100%;
+  max-width: 440px;
+  margin: 0 auto;
+`
 
 const ContactList = ({ contacts, onClick }) => {
   return (
-    <ul className="contactList">
-      {contacts.map(contact => (
-        <ContactItem key={contact.id} id={contact.id} name={contact.name} number={contact.number} onClick={onClick} />
+    <StyledList>
+      {contacts.map(({ id, name, number }) => (
+        <ContactItem key={id} id={id} name={name} number={number} onClick={onClick} />
       ))}
-    </ul>
+    </StyledList>
   )
 }
 

@@ -1,20 +1,20 @@
 import PropTypes from 'prop-types'
 import { MdPhoneEnabled } from 'react-icons/md'
 import { AiFillDelete } from 'react-icons/ai'
-import './ContactItem.scss'
+import { Item, Name, Phone, ButtonDelete } from './ContactsItem.styled'
 
 const ContactItem = ({ id, name, number, onClick }) => {
   return (
-    <li id={id} className="contactItem">
-      <span className="contactItem__name">{name}:</span>
-      <a href={'tel: ' + name} className="contactItem__number">
+    <Item id={id}>
+      <Name>{name}:</Name>
+      <Phone href={'tel: ' + name}>
         <MdPhoneEnabled /> {number}
-      </a>
+      </Phone>
 
-      <button className="btn-delete" type="button" onClick={() => onClick(id)}>
-        <AiFillDelete /> <span className="btn-delete--txt">Delete</span>
-      </button>
-    </li>
+      <ButtonDelete type="button" onClick={() => onClick(id)}>
+        <AiFillDelete /> <span>Delete</span>
+      </ButtonDelete>
+    </Item>
   )
 }
 
